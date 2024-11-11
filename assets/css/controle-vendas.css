@@ -109,7 +109,7 @@ button {
 /* Conteudo dentro do container branco */
 
 .wrapper__controle {
-  background-color: #e0edc5;
+  background-color: #fad5b7;
   margin: 0px 20px;
   border-radius: 14px;
   display: flex;
@@ -117,7 +117,7 @@ button {
 
 .card {
   height: 340px;
-  min-width: 230px;
+  width: 230px;
   border-radius: 14px;
   display: flex;
   flex-direction: column;
@@ -125,8 +125,8 @@ button {
   overflow: hidden;
 }
 
-.card__producao {
-  background-color: #b9d88f;
+.card__vendas {
+  background-color: #f4a06d;
 }
 
 .card__titulo {
@@ -157,9 +157,8 @@ button {
 .wrapper__buttons {
   padding: 40px;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  margin: auto;
 }
 
 .button__link {
@@ -168,6 +167,12 @@ button {
   font-weight: bolder;
   transition: all 0.3s ease 0s;
   color: rgb(255, 254, 240, 1);
+  padding: 14px 135px;
+  border-radius: 10px;
+}
+
+#pedido {
+  padding: 14px 108px;
 }
 
 .matico:hover {
@@ -182,6 +187,6 @@ button {
   cursor: pointer;
   border-radius: 10px;
   height: 55px;
-  width: 240px;
-  margin: 0 40px;
+  width: 340px;
+  margin: 15px 0;
 }
