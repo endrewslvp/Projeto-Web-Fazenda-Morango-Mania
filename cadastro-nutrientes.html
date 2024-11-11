@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro de Nutrientes</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="icon" href="assets/images/Logo.png" />
+    <link rel="stylesheet" href="assets/css/cadastro-nutrientes.css" />
+  </head>
+
+  <body>
+    <div class="bg"></div>
+    <header>
+      <a href="index.html" target="_blank"
+        ><img class="logo" src="assets/images/Logo M Mania 2.png"
+      /></a>
+    </header>
+
+    <main>
+      <div class="main__container">
+        <div class="main__conteudo">
+          <div class="conteudo__wrapper">
+            <div class="main__h1">
+              <button class="button__voltar">
+                <a href="controle-producao.html">
+                  <i class="fa-solid fa-arrow-left"></i>
+                </a>
+              </button>
+              <h1><span class="underline">Cadas</span>tro de Nutrientes</h1>
+            </div>
+            <form class="input__box">
+              <div class="input__wrapper">
+                <div class="wrapper">
+                  <label for="name" class="input__label">Nome *</label>
+                  <input
+                    class="input"
+                    type="text"
+                    id="nome"
+                    name="nome"
+                    placeholder="Insira o nome"
+                    required
+                  />
+                </div>
+
+                <div class="wrapper wrapper-estoque">
+                  <label for="estoque" class="input__label">Estoque *</label>
+                  <input
+                    class="input"
+                    type="number"
+                    id="estoque"
+                    name="estoque"
+                    placeholder="Quantidade"
+                    required
+                    min="0"
+                  />
+                </div>
+
+                <div class="wrapper wrapper-validade">
+                  <label for="validade" class="input__label">Validade *</label>
+                  <input
+                    class="input"
+                    type="date"
+                    id="validade"
+                    name="validade"
+                    required
+                  />
+                </div>
+
+                <div class="wrapper wrapper-descricao">
+                  <label for="validade" class="input__label">Descrição *</label>
+                  <input
+                    class="input"
+                    type="text"
+                    id="descricao"
+                    name="descricao"
+                    placeholder="Descreva o tipo de nutriente"
+                  />
+                </div>
+              </div>
+              <div class="container__button">
+                <button type="submit" class="main__button button__enviar">
+                  Cadastrar
+                </button>
+                <button type="reset" class="main__button button__limpar">
+                  Limpar dados
+                </button>
+              </div>
+            </form>
+          </div>
+          <div class="main__icone">
+            <img
+              class="icone"
+              src="assets/icons/icone-nutrientes.png"
+              alt="icone"
+            />
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="assets/js/cadastro-nutrientes.js"></script>
+  </body>
+</html>
