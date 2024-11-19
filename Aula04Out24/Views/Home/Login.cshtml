@@ -1,0 +1,114 @@
+﻿<!-- to com problema na area de login, essa porra nao funciona de jeito maneira -->
+
+@model Aula04Out24.Models.Cadastro
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Morango Mania</title>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+          integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer" />
+    <link rel="icon" href="~/IMG/Index/Logo M Mania 1.png" />
+    <link rel="stylesheet" href="~/Content/Login.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+    <script>
+        $(document).ready(function () {
+            // Toastr configuration
+            toastr.options = {
+                closeButton: true,
+                progressBar: true,
+                timeOut: "5000",
+                positionClass: "toast-top-right"
+            };
+
+            // Display Toastr messages if TempData is set
+            @if (TempData["ToastrMessage"] != null)
+            {
+                <text>
+                    toastr["@TempData["ToastrType"]"]("@TempData["ToastrMessage"]");
+                </text>
+            }
+
+            // CPF formatting
+            $('.input__cpf').on('input', function () {
+                let value = $(this).val().replace(/\D/g, ''); // Remove non-numeric characters
+                if (value.length <= 11) {
+                    value = value.replace(/(\d{3})(\d)/, '$1.$2');
+                    value = value.replace(/(\d{3})(\d)/, '$1.$2');
+                    value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+                }
+                $(this).val(value); // Update the field
+            });
+
+            // Toggle password visibility
+            $('.button__icon').click(function () {
+                const passwordField = $('.input__senha');
+                const icon = $(this).find('i');
+                if (passwordField.attr('type') === 'password') {
+                    passwordField.attr('type', 'text');
+                    icon.removeClass('fa-eye-slash').addClass('fa-eye');
+                } else {
+                    passwordField.attr('type', 'password');
+                    icon.removeClass('fa-eye').addClass('fa-eye-slash');
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="bg"></div>
+    <header>
+        <a href="index.html" target="_blank">
+            <img class="logo" src="~/IMG/Index/Logo M Mania 1.png" />
+        </a>
+    </header>
+
+    <main>
+        <div class="main__container">
+            <div class="main__cor">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <div class="main__login">
+                <div class="main__h1">
+                    <button class="button__voltar">
+                        <!--Botão voltar funfando dahora-->
+                        <a href=@Url.Action("Index", "Home")>
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </a>
+                    </button>
+                    <h1><span class="underline">Log</span>in</h1>
+                </div>
+                @using (Html.BeginForm(FormMethod.Post)) {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="input-box">
+                        <label for="CPF" class="input__label">Insira seu CPF</label>
+                        @Html.EditorFor(model => model.CPF, new { htmlAttributes = new { @class = "input input__cpf", @placeholder = "Ex. 123.456.789-00", @maxlength = "14", @autocomplete = "off" } })
+                        @Html.ValidationMessageFor(model => model.CPF, "", new { @class = "text-danger" })
+
+                        <label for="password" class="input__label">Insira sua senha</label>
+                        <div class="password-form">
+                            @Html.EditorFor(model => model.Senha, new { htmlAttributes = new { @class = "input__senha input", @type = "password", @placeholder = "Digite sua senha", @required = true } })
+                            <button class="button__icon" type="button">
+                                <i class="fa-regular fa-eye-slash"></i>
+                            </button>
+                        </div>
+                        @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
+
+                        <div class="container__button">
+                            <button type="submit" class="main__button">Entrar</button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </main>
+</body>
+</html>

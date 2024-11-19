@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Morango Mania</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+          integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer" />
+
+    <!-- Toastr CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+
+    <!-- Toastr JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <link rel="icon" href="assets/images/Logo.png" />
+    <link rel="stylesheet" href="~/Content/Index.css" />
+
+    <script>
+    $(document).ready(function () {
+        @if (TempData["ToastrMessage"] != null)
+        {
+            <text>
+                toastr["@TempData["ToastrType"]"]("@TempData["ToastrMessage"]");
+            </text>
+        }
+    });
+    </script>
+</head>
+
+<body>
+    <div class="bg"></div>
+    <header>
+        <img class="logo" src="~/IMG/Index/Logo M Mania 1.png" alt="Logo da Morango Mania" />
+        <nav class="nav__links">
+            <!--Botão voltar funfando dahora-->
+            <a href="@Url.Action("Login", "Home")"><button class="nav__btn">Login</button></a>
+        </nav>
+    </header>
+    <main>
+        <div class="receba">
+            <form class="form" target="_blank" method="get" action="https://www.google.com/search">
+                <input class="input" type="search" placeholder="Buscar Produtos" />
+                <button class="input__btn" type="submit">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </form>
+        </div>
+    </main>
+    <footer></footer>
+</body>
+</html>

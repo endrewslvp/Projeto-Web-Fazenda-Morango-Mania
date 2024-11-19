@@ -1,0 +1,161 @@
+﻿* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: system-ui;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(255, 254, 240);
+}
+
+button {
+    cursor: pointer;
+    outline: none;
+    border: none;
+    background-color: transparent;
+}
+
+body {
+    height: 100vh;
+    background-color: aqua;
+    margin: 0 auto;
+    background-image: url('../img/index/fundo 2.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    overflow: hidden;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    background-color: #fffef0;
+    width: 100%;
+}
+
+main {
+    margin-top: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    width: 250px;
+    margin-left: 20px;
+}
+
+.main__container {
+    height: 600px;
+    width: 74%;
+    max-width: 1400px;
+    min-width: 1200px;
+    margin: 0 20px;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: -40px 40px 5px rgba(0, 0, 0, 0.575);
+    display: flex;
+}
+
+.main__conteudo {
+    height: 100%;
+    width: 100%;
+    background-color: rgb(255, 254, 240);
+    position: relative;
+    padding: 0 60px;
+}
+
+.main__h1 {
+    margin-top: 16px;
+    margin-bottom: 70px;
+    padding: 12px 0;
+    color: rgb(49, 49, 49);
+    display: flex;
+    align-items: center;
+}
+
+.underline {
+    text-decoration: underline rgb(49, 49, 49);
+    text-underline-offset: 0.6em;
+}
+
+.button__link {
+    border: none;
+    font-size: 20px;
+    font-weight: bolder;
+    padding: 7px 50px;
+    background-color: rgb(67, 67, 67);
+    cursor: pointer;
+    border-radius: 10px;
+    transition: all 0.3s ease 0s;
+    color: rgb(255, 254, 240, 1);
+    text-align: center;
+    margin: 16px;
+}
+
+    .button__link:hover {
+        background-color: rgba(85, 85, 85, 0.9);
+    }
+
+.wrapper__controle {
+    display: flex;
+    /* Divs precisam de um tamanho settado
+  pra funcionarem com o flex-box */
+    justify-content: center;
+}
+
+.card {
+    height: 340px;
+    width: 240px;
+    border-radius: 14px;
+    margin: 0 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+.card__producao {
+    background-color: #b9d88f;
+}
+
+.card__rh {
+    background-color: #6ea3ad;
+}
+
+.card__vendas {
+    background-color: #f4a06d;
+}
+
+.card__usuario {
+    background-color: #ff6969;
+}
+
+.card__titulo {
+    width: 100%;
+    background-color: rgb(77, 77, 77);
+    margin-bottom: 14px;
+    text-align: center;
+    padding: 12px 10px;
+    color: #fffef0;
+    font-size: 1.6em;
+    line-height: 26px;
+    font-weight: bold;
+}
+
+.titulo__rh {
+    padding: 25px 0;
+}
+
+.card__imagem {
+    background-color: #fffef0;
+    padding: 20px;
+    border-radius: 16px;
+    margin: 20px 0;
+}
+
+.card__icon {
+    width: 80px;
+}

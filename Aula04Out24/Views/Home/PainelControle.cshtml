@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Painel de Controle</title>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+          integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer" />
+    <link rel="icon" href="~/IMG/Index/Logo M Mania 1.png" />
+    <link rel="stylesheet" href="~/Content/PainelControle.css" />
+</head>
+
+<body>
+    <div class="bg"></div>
+    <header>
+        <a href="index.html" target="_blank">
+            <img class="logo" src="~/IMG/Index/Logo M Mania 1.png" />
+        </a>
+    </header>
+
+    <main>
+        <div class="main__container">
+            <div class="main__conteudo">
+                <div class="conteudo__wrapper">
+                    <div class="main__h1">
+                        <h1><span class="underline">Pain</span>el de Controle</h1>
+                    </div>
+                    <div class="wrapper__controle">
+                        <div class="card card__producao">
+                            <div class="card__titulo">Controle de Produção</div>
+                            <div class="card__imagem">
+                                <img class="card__icon"
+                                     src="~/Icon/strawberry.png"
+                                     alt="" />
+                            </div>
+
+                            <a class="button__link" href=@Url.Action("ControleProducao")>Acessar</a>
+                        </div>
+                        <div class="card card__rh">
+                            <div class="card__titulo titulo__rh">Controle de RH</div>
+                            <div class="card__imagem">
+                                <img class="card__icon"
+                                <img src="~/Icon/customer-care.png" />
+                            </div>
+
+                            <a class="button__link" href=#>Acessar</a>
+                        </div>
+                        <div class="card card__vendas">
+                            <div class="card__titulo">Controle de Vendas</div>
+                            <div class="card__imagem">
+                                <img class="card__icon" src="~/Icon/tag.png" alt="" />
+                            </div>
+                            <a class="button__link" href=#>Acessar</a>
+                        </div>
+                        <div class="card card__usuario">
+                            <div class="card__titulo">Cadastro de Usuário</div>
+                            <div class="card__imagem">
+                                <img class="card__icon"
+                                     src="~/Icon/verify.png"
+                                     alt="" />
+                            </div>
+
+                            <a class="button__link" href=@Url.Action("CadastroUsuario")>Acessar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="assets/js/cadastro-nutrientes.js"></script>
+</body>
+</html>

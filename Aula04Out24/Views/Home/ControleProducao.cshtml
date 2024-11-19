@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Controle de Produção</title>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+          integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer" />
+    <link rel="icon" href="~/IMG/Index/Logo M Mania 1.png" />
+    <link rel="stylesheet" href="~/Content/ControleProducao.css" />
+</head>
+
+<body>
+    <div class="bg"></div>
+    <header>
+        <a href="index.html" target="_blank">
+            <img class="logo" src="~/IMG/Index/Logo M Mania 1.png" />
+        </a>
+    </header>
+
+    <main>
+        <div class="main__container">
+            <div class="main__conteudo">
+                <div class="conteudo__wrapper">
+                    <div class="main__h1">
+                        <button class="button__voltar">
+                            <!--botão para voltar funfando pampa-->
+                            <a href=@Url.Action("PainelControle")>
+                                <i class="fa-solid fa-arrow-left"></i>
+                            </a>
+                        </button>
+                        <h1><span class="underline">Pain</span>el de Controle</h1>
+                    </div>
+                    <div class="wrapper__controle">
+                        <div class="card card__producao">
+                            <div class="card__titulo">Controle de Produção</div>
+                            <div class="card__imagem">
+                                <img class="card__icon"
+                                     src="~/Icon/strawberry.png"
+                                     alt="" />
+                            </div>
+                        </div>
+                        <div class="wrapper__buttons">
+                            <div class="matico">
+                                <a href="" class="button__link">Fornecedores</a>
+                            </div>
+                            <div class="matico">
+                                <a href="" class="button__link">Produtos</a>
+                            </div>
+                            <div class="matico">
+                                <a href="" class="button__link">Sementes</a>
+                            </div>
+                            <div class="matico">
+                                <a href=@Url.Action("CadastroNutrientes") class="button__link">Nutrientes</a>
+                            </div>
+                            <div class="matico">
+                                <a href="" class="button__link">Ferramentas</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

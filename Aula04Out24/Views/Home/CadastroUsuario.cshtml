@@ -1,0 +1,119 @@
+﻿@model Aula04Out24.Models.Cadastro
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro de Usuário</title>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+          integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer" />
+    <link rel="icon" href="~/IMG/Index/Logo M Mania 1.png" />
+    <link rel="stylesheet" href="~/Content/CadastroUsuario.css" />
+    <!-- Toastr CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+
+    <!-- Toastr JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script>
+    $(document).ready(function () {
+        @if (TempData["ToastrMessage"] != null)
+        {
+            <text>
+                toastr["@TempData["ToastrType"]"]("@TempData["ToastrMessage"]");
+            </text>
+        }
+    });
+    </script>
+</head>
+
+<body>
+    <div class="bg"></div>
+    <header>
+        <a href="index.html" target="_blank">
+            <img class="logo" src="~/IMG/Index/Logo M Mania 1.png" />
+        </a>
+    </header>
+
+    <main>
+        <div class="main__container">
+            <div class="main__cor">
+                <div class="teste">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+            </div>
+            <div class="main__conteudo">
+                <div class="main__h1">
+                    <button class="button__voltar">
+                        <!--Botão voltar funfando dahora-->
+                        <a href=@Url.Action("PainelControle")>
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </a>
+                    </button>
+                    <h1><span class="underline">Cadas</span>tro de Usuário</h1>
+                </div>
+                @using (Html.BeginForm()) {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="input__box">
+                        <div class="input__wrapper">
+                            <div class="wrapper">
+                                @Html.LabelFor(model => model.NomeFull, "Nome Completo *", new { @class = "input__label" })
+                                @Html.EditorFor(model => model.NomeFull, new { htmlAttributes = new { @class = "input", @placeholder = "Digite seu nome completo" } })
+                                @Html.ValidationMessageFor(model => model.NomeFull, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="wrapper">
+                                @Html.LabelFor(model => model.CPF, "CPF *", new { @class = "input__label" })
+                                @Html.EditorFor(model => model.CPF, new { htmlAttributes = new { @class = "input", @placeholder = "Ex. 123.456.789-00", @maxlength = "14" } })
+                                @Html.ValidationMessageFor(model => model.CPF, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="wrapper">
+                                @Html.LabelFor(model => model.Email, "Email *", new { @class = "input__label" })
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "input", @placeholder = "Digite seu email" } })
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="wrapper">
+                                @Html.Label("Cargo *", new { @class = "input__label" })
+                                <div class="radio">
+                                    <label for="cargo-1">
+                                        @Html.RadioButtonFor(model => model.Cargo, "Cargo 1", new { @id = "cargo-1", @class = "input" }) Cargo 1
+                                    </label>
+                                    <label for="cargo-2">
+                                        @Html.RadioButtonFor(model => model.Cargo, "Cargo 2", new { @id = "cargo-2", @class = "input" }) Cargo 2
+                                    </label>
+                                    <label for="cargo-3">
+                                        @Html.RadioButtonFor(model => model.Cargo, "Cargo 3", new { @id = "cargo-3", @class = "input" }) Cargo 3
+                                    </label>
+                                </div>
+                                @Html.ValidationMessageFor(model => model.Cargo, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="wrapper">
+                                @Html.LabelFor(model => model.Senha, "Senha *", new { @class = "input__label" })
+                                @Html.EditorFor(model => model.Senha, new { htmlAttributes = new { @class = "input", @type = "password", @placeholder = "Digite sua senha", @maxlength = "12" } })
+                                @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="container__button">
+                            <button type="submit" class="main__button button__enviar">
+                                Cadastrar
+                            </button>
+                            <button type="reset" class="main__button button__limpar">
+                                Limpar dados
+                            </button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </main>
+</body>
+</html>
