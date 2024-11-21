@@ -132,53 +132,56 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Admin.cs">
+      <DependentUpon>ModelBancoDados.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Cadastro.cs">
-      <DependentUpon>ModelBD.tt</DependentUpon>
+      <DependentUpon>ModelBancoDados.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Cargos.cs">
-      <DependentUpon>ModelBD.tt</DependentUpon>
+      <DependentUpon>ModelBancoDados.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Clientes.cs">
-      <DependentUpon>ModelBD.tt</DependentUpon>
+      <DependentUpon>ModelBancoDados.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Colaboradores.cs">
-      <DependentUpon>ModelBD.tt</DependentUpon>
+      <DependentUpon>ModelBancoDados.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Ferramentas.cs">
-      <DependentUpon>ModelBD.tt</DependentUpon>
+      <DependentUpon>ModelBancoDados.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Fornecedores.cs">
-      <DependentUpon>ModelBD.tt</DependentUpon>
+      <DependentUpon>ModelBancoDados.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ModelBD.Context.cs">
+    <Compile Include="Models\ModelBancoDados.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelBD.Context.tt</DependentUpon>
+      <DependentUpon>ModelBancoDados.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ModelBD.cs">
+    <Compile Include="Models\ModelBancoDados.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelBD.tt</DependentUpon>
+      <DependentUpon>ModelBancoDados.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ModelBD.Designer.cs">
+    <Compile Include="Models\ModelBancoDados.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelBD.edmx</DependentUpon>
+      <DependentUpon>ModelBancoDados.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Nutrientes.cs">
-      <DependentUpon>ModelBD.tt</DependentUpon>
+      <DependentUpon>ModelBancoDados.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Produtos.cs">
-      <DependentUpon>ModelBD.tt</DependentUpon>
+      <DependentUpon>ModelBancoDados.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sementes.cs">
-      <DependentUpon>ModelBD.tt</DependentUpon>
+      <DependentUpon>ModelBancoDados.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>ModelBD.tt</DependentUpon>
+      <DependentUpon>ModelBancoDados.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Vendas.cs">
-      <DependentUpon>ModelBD.tt</DependentUpon>
+      <DependentUpon>ModelBancoDados.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -186,6 +189,7 @@
     <Content Include="Content\CadastroNutrientes.css" />
     <Content Include="Content\CadastroUsuario.css" />
     <Content Include="Content\ControleProducao.css" />
+    <Content Include="Content\ControleRH.css" />
     <Content Include="Content\ControleVendas.css" />
     <Content Include="Content\Index.css" />
     <Content Include="Content\Login.css" />
@@ -208,6 +212,7 @@
     <Content Include="Icon\funcionario-homem-alt.png" />
     <Content Include="Icon\icone-nutrientes.png" />
     <Content Include="Icon\image_2024-04-04_125706769-Photoroom.png-Photoroom.png" />
+    <Content Include="Icon\man.png" />
     <Content Include="Icon\morango %281%29.png" />
     <Content Include="Icon\morango.png" />
     <Content Include="Icon\passar %281%29.png" />
@@ -226,15 +231,15 @@
     <Content Include="IMG\Index\Fundo 2.png" />
     <Content Include="IMG\Index\Logo M Mania 1.png" />
     <Content Include="IMG\Index\TelaFundo.png" />
-    <Content Include="Models\ModelBD.Context.tt">
+    <Content Include="Models\ModelBancoDados.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelBD.edmx</DependentUpon>
-      <LastGenOutput>ModelBD.Context.cs</LastGenOutput>
+      <DependentUpon>ModelBancoDados.edmx</DependentUpon>
+      <LastGenOutput>ModelBancoDados.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\ModelBD.tt">
+    <Content Include="Models\ModelBancoDados.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelBD.edmx</DependentUpon>
-      <LastGenOutput>ModelBD.cs</LastGenOutput>
+      <DependentUpon>ModelBancoDados.edmx</DependentUpon>
+      <LastGenOutput>ModelBancoDados.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\toastr.js" />
     <Content Include="Scripts\toastr.min.js" />
@@ -255,12 +260,13 @@
   <ItemGroup>
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
-    <EntityDeploy Include="Models\ModelBD.edmx">
+    <Content Include="Content\CadastroColaborador.css" />
+    <EntityDeploy Include="Models\ModelBancoDados.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModelBD.Designer.cs</LastGenOutput>
+      <LastGenOutput>ModelBancoDados.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\ModelBD.edmx.diagram">
-      <DependentUpon>ModelBD.edmx</DependentUpon>
+    <Content Include="Models\ModelBancoDados.edmx.diagram">
+      <DependentUpon>ModelBancoDados.edmx</DependentUpon>
     </Content>
     <None Include="packages.config" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -271,6 +277,8 @@
     <Content Include="Views\Home\ControleVendas.cshtml" />
     <Content Include="Views\Home\PainelControle.cshtml" />
     <Content Include="Views\Home\CadastroSementes.cshtml" />
+    <Content Include="Views\Home\CadastroColaboradores.cshtml" />
+    <Content Include="Views\Home\ControleRH.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

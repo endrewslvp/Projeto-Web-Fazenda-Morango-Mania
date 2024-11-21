@@ -1,5 +1,4 @@
-﻿<!-- to com problema na area de login, essa porra nao funciona de jeito maneira -->
-
+﻿
 @model Aula04Out24.Models.Cadastro
 <!DOCTYPE html>
 <html lang="en">
@@ -17,9 +16,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+
     <script>
         $(document).ready(function () {
-            // Toastr configuration
+            // configuração do toastr
             toastr.options = {
                 closeButton: true,
                 progressBar: true,
@@ -27,7 +27,7 @@
                 positionClass: "toast-top-right"
             };
 
-            // Display Toastr messages if TempData is set
+            // display do toastr para exibir mensagem na tela
             @if (TempData["ToastrMessage"] != null)
             {
                 <text>
@@ -35,18 +35,18 @@
                 </text>
             }
 
-            // CPF formatting
+            // função que formata o cpf automatico
             $('.input__cpf').on('input', function () {
-                let value = $(this).val().replace(/\D/g, ''); // Remove non-numeric characters
-                if (value.length <= 11) {
+                let value = $(this).val().replace(/\D/g, ''); // função que nao aceita letras, apenas numeros
+                if (value.length <= 14) {
                     value = value.replace(/(\d{3})(\d)/, '$1.$2');
                     value = value.replace(/(\d{3})(\d)/, '$1.$2');
                     value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
                 }
-                $(this).val(value); // Update the field
+                $(this).val(value); // atualiza este campo
             });
 
-            // Toggle password visibility
+            // visibilidade de senha
             $('.button__icon').click(function () {
                 const passwordField = $('.input__senha');
                 const icon = $(this).find('i');
@@ -84,7 +84,8 @@
                     </button>
                     <h1><span class="underline">Log</span>in</h1>
                 </div>
-                @using (Html.BeginForm(FormMethod.Post)) {
+                <!-- Formulário de login -->
+                @using (Html.BeginForm("Login", "Home")) {
                     @Html.AntiForgeryToken()
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 

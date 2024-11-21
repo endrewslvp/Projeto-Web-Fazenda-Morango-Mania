@@ -4,7 +4,17 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="FazendaUrbanaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="FazendaUrbanaModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FazendaUrbana.dbo.Admin' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="CPF" />
+            <PropertyRef Name="Senha" />
+          </Key>
+          <Property Name="CPF" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Senha" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
         <EntityType Name="Cadastro">
           <Key>
             <PropertyRef Name="ID" />
@@ -46,7 +56,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nome" Type="nvarchar" MaxLength="100" />
           <Property Name="CPF" Type="nvarchar" MaxLength="14" />
-          <Property Name="Horario" Type="nvarchar" MaxLength="30" />
+          <Property Name="Horario" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Cargo" Type="nvarchar" MaxLength="30" />
         </EntityType>
         <EntityType Name="Ferramentas">
@@ -149,7 +159,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="FazendaUrbanaModelStoreContainer">
+        <EntityContainer Name="FazendaUrbanaModel1StoreContainer">
           <EntitySet Name="Cadastro" EntityType="Self.Cadastro" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cargos" EntityType="Self.Cargos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
@@ -161,6 +171,12 @@
           <EntitySet Name="Sementes" EntityType="Self.Sementes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vendas" EntityType="Self.Vendas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Admin" EntityType="Self.Admin" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Admin].[CPF] AS [CPF], 
+    [Admin].[Senha] AS [Senha]
+    FROM [dbo].[Admin] AS [Admin]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK__Vendas__ID_Clien__2CF2ADDF" Association="Self.FK__Vendas__ID_Clien__2CF2ADDF">
             <End Role="Clientes" EntitySet="Clientes" />
             <End Role="Vendas" EntitySet="Vendas" />
@@ -174,7 +190,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="FazendaUrbanaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="FazendaUrbanaModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Cadastro">
           <Key>
             <PropertyRef Name="ID" />
@@ -217,7 +233,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nome" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="CPF" Type="String" MaxLength="14" FixedLength="false" Unicode="true" />
-          <Property Name="Horario" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Horario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Cargo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Ferramentas">
@@ -299,6 +315,14 @@
           <NavigationProperty Name="Clientes" Relationship="Self.FK__Vendas__ID_Clien__2CF2ADDF" FromRole="Vendas" ToRole="Clientes" />
           <NavigationProperty Name="Produtos" Relationship="Self.FK__Vendas__ID_Produ__2DE6D218" FromRole="Vendas" ToRole="Produtos" />
         </EntityType>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="CPF" />
+            <PropertyRef Name="Senha" />
+          </Key>
+          <Property Name="CPF" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Senha" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
         <Association Name="FK__Vendas__ID_Clien__2CF2ADDF">
           <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
           <End Role="Vendas" Type="Self.Vendas" Multiplicity="*" />
@@ -323,7 +347,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="FazendaUrbanaEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="FazendaUrbanaEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Cadastro" EntityType="Self.Cadastro" />
           <EntitySet Name="Cargos" EntityType="Self.Cargos" />
           <EntitySet Name="Clientes" EntityType="Self.Clientes" />
@@ -335,6 +359,7 @@
           <EntitySet Name="Sementes" EntityType="Self.Sementes" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Vendas" EntityType="Self.Vendas" />
+          <EntitySet Name="Admin" EntityType="Self.Admin" />
           <AssociationSet Name="FK__Vendas__ID_Clien__2CF2ADDF" Association="Self.FK__Vendas__ID_Clien__2CF2ADDF">
             <End Role="Clientes" EntitySet="Clientes" />
             <End Role="Vendas" EntitySet="Vendas" />
@@ -349,9 +374,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="FazendaUrbanaModelStoreContainer" CdmEntityContainer="FazendaUrbanaEntities">
+        <EntityContainerMapping StorageEntityContainer="FazendaUrbanaModel1StoreContainer" CdmEntityContainer="FazendaUrbanaEntities1">
           <EntitySetMapping Name="Cadastro">
-            <EntityTypeMapping TypeName="FazendaUrbanaModel.Cadastro">
+            <EntityTypeMapping TypeName="FazendaUrbanaModel1.Cadastro">
               <MappingFragment StoreEntitySet="Cadastro">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="NomeFull" ColumnName="NomeFull" />
@@ -363,7 +388,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Cargos">
-            <EntityTypeMapping TypeName="FazendaUrbanaModel.Cargos">
+            <EntityTypeMapping TypeName="FazendaUrbanaModel1.Cargos">
               <MappingFragment StoreEntitySet="Cargos">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
@@ -372,7 +397,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Clientes">
-            <EntityTypeMapping TypeName="FazendaUrbanaModel.Clientes">
+            <EntityTypeMapping TypeName="FazendaUrbanaModel1.Clientes">
               <MappingFragment StoreEntitySet="Clientes">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
@@ -388,7 +413,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Colaboradores">
-            <EntityTypeMapping TypeName="FazendaUrbanaModel.Colaboradores">
+            <EntityTypeMapping TypeName="FazendaUrbanaModel1.Colaboradores">
               <MappingFragment StoreEntitySet="Colaboradores">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
@@ -399,7 +424,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Ferramentas">
-            <EntityTypeMapping TypeName="FazendaUrbanaModel.Ferramentas">
+            <EntityTypeMapping TypeName="FazendaUrbanaModel1.Ferramentas">
               <MappingFragment StoreEntitySet="Ferramentas">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
@@ -410,7 +435,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Fornecedores">
-            <EntityTypeMapping TypeName="FazendaUrbanaModel.Fornecedores">
+            <EntityTypeMapping TypeName="FazendaUrbanaModel1.Fornecedores">
               <MappingFragment StoreEntitySet="Fornecedores">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
@@ -426,7 +451,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Nutrientes">
-            <EntityTypeMapping TypeName="FazendaUrbanaModel.Nutrientes">
+            <EntityTypeMapping TypeName="FazendaUrbanaModel1.Nutrientes">
               <MappingFragment StoreEntitySet="Nutrientes">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
@@ -437,7 +462,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Produtos">
-            <EntityTypeMapping TypeName="FazendaUrbanaModel.Produtos">
+            <EntityTypeMapping TypeName="FazendaUrbanaModel1.Produtos">
               <MappingFragment StoreEntitySet="Produtos">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
@@ -448,7 +473,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Sementes">
-            <EntityTypeMapping TypeName="FazendaUrbanaModel.Sementes">
+            <EntityTypeMapping TypeName="FazendaUrbanaModel1.Sementes">
               <MappingFragment StoreEntitySet="Sementes">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
@@ -458,7 +483,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="FazendaUrbanaModel.sysdiagrams">
+            <EntityTypeMapping TypeName="FazendaUrbanaModel1.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -469,7 +494,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Vendas">
-            <EntityTypeMapping TypeName="FazendaUrbanaModel.Vendas">
+            <EntityTypeMapping TypeName="FazendaUrbanaModel1.Vendas">
               <MappingFragment StoreEntitySet="Vendas">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="ID_Cliente" ColumnName="ID_Cliente" />
@@ -478,6 +503,14 @@
                 <ScalarProperty Name="TotalCompra" ColumnName="TotalCompra" />
                 <ScalarProperty Name="CodigoCompra" ColumnName="CodigoCompra" />
                 <ScalarProperty Name="MetodoPagamento" ColumnName="MetodoPagamento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Admin">
+            <EntityTypeMapping TypeName="FazendaUrbanaModel1.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="CPF" ColumnName="CPF" />
+                <ScalarProperty Name="Senha" ColumnName="Senha" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

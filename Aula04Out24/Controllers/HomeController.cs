@@ -6,12 +6,13 @@ using System.Web.Mvc;
 
 namespace Aula04Out24.Controllers {
     public class HomeController : Controller {
-        private readonly FazendaUrbanaEntities _context = new FazendaUrbanaEntities();
+        private readonly FazendaUrbanaEntities1 _context = new FazendaUrbanaEntities1();
 
         public ActionResult Index() {
             return View();
         }
 
+        // views para login, post e get
         public ActionResult Login() {
             return View();
         }
@@ -47,6 +48,7 @@ namespace Aula04Out24.Controllers {
             return View(login);
         }
 
+        // views para cadastro de usuário, post e get
         [HttpGet]
         public ActionResult CadastroUsuario() {
             return View();
@@ -69,7 +71,7 @@ namespace Aula04Out24.Controllers {
 
             return View(cadastro);
         }
-
+        // views para cadastrar semenst, post e get
         [HttpGet]
         public ActionResult CadastroSementes() {
             return View();
@@ -125,8 +127,35 @@ namespace Aula04Out24.Controllers {
         }
 
         public ActionResult PainelControle() {
+            // Certificando-se de que o Toastr será exibido se houver alguma mensagem
+            if (TempData["ToastrMessage"] != null) {
+                ViewBag.ToastrMessage = TempData["ToastrMessage"];
+                ViewBag.ToastrType = TempData["ToastrType"];
+            }
             return View();
         }
+        [HttpGet]
+        public ActionResult CadastroColaboradores() {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult CadastroColaboradores(Colaboradores colaboradores) {
+            if (ModelState.IsValid) {
+                _context.Colaboradores.Add(colaboradores);
+                _context.SaveChanges();
+                TempData["ToastrMessage"] = "Informações enviadas com sucesso!";
+                TempData["ToastrType"] = "success";
+                return RedirectToAction("PainelControle");
+            }
+            else {
+                LogModelErrors();
+                TempData["ToastrMessage"] = "Insira todos os campos para prosseguir!";
+                TempData["ToastrType"] = "error";
+            }
+
+            return View(colaboradores);
+        }
+
 
         // Método utilitário para logar erros de validação
         private void LogModelErrors() {

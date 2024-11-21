@@ -7,24 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.ComponentModel.DataAnnotations;
-
-namespace Aula04Out24.Models {
-    public partial class Nutrientes {
+namespace Aula04Out24.Models
+{
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class Nutrientes
+    {
         public int ID { get; set; }
-
-        [Required(ErrorMessage = "O nome é obrigatório.")]
         public string Nome { get; set; }
-
-        [Required(ErrorMessage = "A validade é obrigatória.")]
-        public DateTime Validade { get; set; }
-
-        [Required(ErrorMessage = "A quantidade é obrigatória.")]
-        [Range(1, int.MaxValue, ErrorMessage = "A quantidade deve ser maior que zero.")]
+        public System.DateTime Validade { get; set; }
         public int Quantidade { get; set; }
-
-        [Required(ErrorMessage = "A descrição é obrigatória.")]
         public string Descricao { get; set; }
     }
 }

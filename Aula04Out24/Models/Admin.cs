@@ -12,13 +12,9 @@ namespace Aula04Out24.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Cadastro
+    public partial class Admin
     {
-        public int ID { get; set; }
-        public string NomeFull { get; set; }
         public string CPF { get; set; }
-        public string Cargo { get; set; }
-        public string Email { get; set; }
         public string Senha { get; set; }
     }
 }

@@ -11,6 +11,23 @@
           referrerpolicy="no-referrer" />
     <link rel="icon" href="~/IMG/Index/Logo M Mania 1.png" />
     <link rel="stylesheet" href="~/Content/PainelControle.css" />
+    <!-- Toastr CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+
+    <!-- Toastr JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script>
+    $(document).ready(function () {
+        // Verifica se existe uma mensagem do Toastr
+        @if (ViewBag.ToastrMessage != null)
+        {
+            <text>
+                toastr["@ViewBag.ToastrType"]("@ViewBag.ToastrMessage");
+            </text>
+        }
+    });
+    </script>
 </head>
 
 <body>
@@ -46,14 +63,14 @@
                                 <img src="~/Icon/customer-care.png" />
                             </div>
 
-                            <a class="button__link" href=#>Acessar</a>
+                            <a class="button__link" href=@Url.Action("ControleRH")>Acessar</a>
                         </div>
                         <div class="card card__vendas">
                             <div class="card__titulo">Controle de Vendas</div>
                             <div class="card__imagem">
                                 <img class="card__icon" src="~/Icon/tag.png" alt="" />
                             </div>
-                            <a class="button__link" href=#>Acessar</a>
+                            <a class="button__link" href=@Url.Action("ControleVendas") >Acessar</a>
                         </div>
                         <div class="card card__usuario">
                             <div class="card__titulo">Cadastro de Usuário</div>

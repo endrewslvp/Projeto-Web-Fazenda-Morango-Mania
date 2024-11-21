@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Controle de Vendas</title>
+    <title>Controle de RH</title>
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
           integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
           crossorigin="anonymous"
           referrerpolicy="no-referrer" />
-    <link rel="icon" href="~/IMG/Index/Logo M Mania 1.png" />
-    <link rel="stylesheet" href="~/Content/ControleVendas.css" />" 
+    <link rel="icon" href="assets/images/Logo.png" />
+    <link rel="stylesheet" href="~/Content/ControleRH.css" />
 </head>
 
 <body>
     <div class="bg"></div>
     <header>
         <a href="index.html" target="_blank">
-            <img class="logo" src="~/IMG/Index/Logo M Mania 1.png"/>
+            <!-- trocado o caminho da imagem -->
+            <img class="logo" src="~/IMG/Index/Logo M Mania 1.png" />
         </a>
     </header>
 
@@ -27,7 +28,7 @@
                 <div class="conteudo__wrapper">
                     <div class="main__h1">
                         <button class="button__voltar">
-                            <a class="voltar__link" href=@Url.Action("PainelControle") >
+                            <a class="voltar__link" href="painel-controle.html">
                                 <i class="fa-solid fa-arrow-left"></i>
                             </a>
                         </button>
@@ -35,20 +36,22 @@
                     </div>
                     <div class="wrapper__controle">
                         <div class="card card__vendas">
-                            <div class="card__titulo">Controle de Vendas</div>
+                            <div class="card__titulo">Controle de RH</div>
                             <div class="card__imagem">
-                                <img class="card__icon" src="~/Icon/tag.png" alt="" />
+                                <!-- trocado caminho da imagem -->
+                                <img class="card__icon"
+                                     src="~/Icon/customer-care.png"
+                                     alt="" />
                             </div>
                         </div>
                         <div class="wrapper__buttons">
                             <div class="matico">
-                                <a href="" class="button__link" id="pedido">Gerar Pedido</a>
+                                <a href=@Url.Action("CadastroColaboradores")
+                                   class="button__link"
+                                   id="pedido">Colaboradores</a>
                             </div>
                             <div class="matico">
-                                <a href="" class="button__link">Vendas</a>
-                            </div>
-                            <div class="matico">
-                                <a href="" class="button__link">Clientes</a>
+                                <a href="" class="button__link">Cargos</a>
                             </div>
                         </div>
                     </div>

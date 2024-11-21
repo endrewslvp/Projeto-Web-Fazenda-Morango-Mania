@@ -13,10 +13,10 @@ namespace Aula04Out24.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class FazendaUrbanaEntities : DbContext
+    public partial class FazendaUrbanaEntities1 : DbContext
     {
-        public FazendaUrbanaEntities()
-            : base("name=FazendaUrbanaEntities")
+        public FazendaUrbanaEntities1()
+            : base("name=FazendaUrbanaEntities1")
         {
         }
     
@@ -36,5 +36,6 @@ namespace Aula04Out24.Models
         public virtual DbSet<Sementes> Sementes { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Vendas> Vendas { get; set; }
+        public virtual DbSet<Admin> Admin { get; set; }
     }
 }
