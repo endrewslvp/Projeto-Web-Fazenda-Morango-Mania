@@ -61,7 +61,7 @@ header {
     font-weight: 600;
 }
 
-.fa-user {
+#header__fa-user {
     margin-right: 8px;
     font-size: 28px;
     color: #404040;

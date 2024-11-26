@@ -11,7 +11,7 @@
           crossorigin="anonymous"
           referrerpolicy="no-referrer" />
     <link rel="icon" href="~/IMG/Index/Logo M Mania 1.png" />
-    <link rel="stylesheet" href="~/Content/CadastroUsuario.css" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/CadastroUsuario.css")?v=@DateTime.Now.Ticks" />
     <!-- Toastr CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
 
@@ -37,7 +37,7 @@
             <img class="logo" src="~/IMG/Index/Logo M Mania 2.png" />
         </a>
         <div class="header__wrapper">
-            <i class="fa-solid fa-user"></i>
+            <i class="fa-solid fa-user" id="header__fa-user"></i>
             <!-- Colocar lógica para mostrar nome do usuário -->
             <p class="header__p" id="usuario">@ViewBag.NomeUsuario</p>
         </div>
