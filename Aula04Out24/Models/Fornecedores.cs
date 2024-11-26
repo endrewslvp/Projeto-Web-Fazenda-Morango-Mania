@@ -7,19 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Aula04Out24.Models
-{
+namespace Aula04Out24.Models {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Fornecedores
-    {
+    using System.ComponentModel.DataAnnotations;
+
+    public partial class Fornecedores {
         public int Id { get; set; }
         public string Nome { get; set; }
+
         public string TipoFornecimento { get; set; }
+
         public string Descricao { get; set; }
+
         public string Telefone { get; set; }
+
         public string Email { get; set; }
+
         public string CNPJ { get; set; }
         public string Bairro { get; set; }
         public string Numero { get; set; }

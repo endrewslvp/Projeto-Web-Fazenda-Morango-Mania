@@ -186,7 +186,7 @@ namespace Aula04Out24.Controllers {
                 _context.SaveChanges();
                 TempData["ToastrMessage"] = "Informações enviadas com sucesso!";
                 TempData["ToastrType"] = "success";
-                return RedirectToAction("CadastroFornecedor");
+                return RedirectToAction("ListaFornecedores");
             }
             else {
                 LogModelErrors();
@@ -196,6 +196,7 @@ namespace Aula04Out24.Controllers {
             return View(fornecedor);
         }
         public ActionResult EditFornecedor (int id) {
+            ViewBag.NomeUsuario = UserLogin();
             var fornecedores = _context.Fornecedores.FirstOrDefault(p => p.Id == id); 
             if (fornecedores == null){
                 return HttpNotFound();
@@ -203,6 +204,7 @@ namespace Aula04Out24.Controllers {
             return View (fornecedores);
         }
         public ActionResult ListaFornecedores() {
+            ViewBag.NomeUsuario = UserLogin();
             var fornecedores = _context.Fornecedores.ToList();
             return View(fornecedores);
         }
@@ -210,6 +212,7 @@ namespace Aula04Out24.Controllers {
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult EditFornecedor(Fornecedores fornecedores) {
+            ViewBag.NomeUsuario = UserLogin();
             if (ModelState.IsValid) {
                 var fornecedoresBanco = _context.Fornecedores.FirstOrDefault(p => p.Id == fornecedores.Id);
                 if (fornecedoresBanco != null) {
@@ -265,6 +268,7 @@ namespace Aula04Out24.Controllers {
             return View(produto);
         }
         public ActionResult ListaProdutos() {
+            ViewBag.NomeUsuario = UserLogin();
             var produtos = _context.Produtos.ToList();
             return View(produtos);
         }
@@ -272,6 +276,7 @@ namespace Aula04Out24.Controllers {
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult EditProduto(Produtos produto) {
+            ViewBag.NomeUsuario = UserLogin();
             if (ModelState.IsValid) {
                 var produtoBanco = _context.Produtos.FirstOrDefault(p => p.Id == produto.Id);
 

@@ -7,18 +7,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Aula04Out24.Models
-{
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class Cadastro
-    {
+using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace Aula04Out24.Models {
+    public partial class Cadastro {
         public int ID { get; set; }
         public string NomeFull { get; set; }
+
+        [Required(ErrorMessage = "O CPF é obrigatório.")]
         public string CPF { get; set; }
         public string Cargo { get; set; }
         public string Email { get; set; }
+
+        [Required(ErrorMessage = "A senha é obrigatória.")]
+        [StringLength(8, MinimumLength = 8, ErrorMessage = "A senha deve ter 8 caracteres.")]
         public string Senha { get; set; }
     }
 }

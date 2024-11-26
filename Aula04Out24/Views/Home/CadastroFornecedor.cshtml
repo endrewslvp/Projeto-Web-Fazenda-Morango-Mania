@@ -21,6 +21,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
     <script>
         $(document).ready(function () {
+            $('#Telefone').mask('(00) 00000-0000');
             $('#CNPJ').mask('00.000.000/0000-00');
 
             @if (ViewBag.ToastrMessage != null)
@@ -71,7 +72,7 @@
 
                                 <div class="wrapper">
                                     @Html.LabelFor(model => model.Telefone, "Telefone *", new { @class = "input__label" })
-                                    @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "input", @placeholder = "(XX) XXXXX-XXXX" } })
+                                    @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "input", @id = "Telefone", @placeholder = "(XX) XXXXX-XXXX" } })
                                     @Html.ValidationMessageFor(model => model.Telefone, "", new { @class = "text-danger" })
                                 </div>
 
