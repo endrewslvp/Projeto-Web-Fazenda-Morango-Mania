@@ -132,9 +132,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Admin.cs">
-      <DependentUpon>ModelBancoDados.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Cadastro.cs">
       <DependentUpon>ModelBancoDados.tt</DependentUpon>
     </Compile>
@@ -186,12 +183,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\CadastroFornecedor.css" />
     <Content Include="Content\CadastroNutrientes.css" />
+    <Content Include="Content\CadastroProduto.css" />
     <Content Include="Content\CadastroUsuario.css" />
     <Content Include="Content\ControleProducao.css" />
     <Content Include="Content\ControleRH.css" />
     <Content Include="Content\ControleVendas.css" />
     <Content Include="Content\Index.css" />
+    <Content Include="Content\LayoutPadrao.css" />
     <Content Include="Content\Login.css" />
     <Content Include="Content\PainelControle.css" />
     <Content Include="Content\toastr.css" />
@@ -229,6 +229,8 @@
     <Content Include="Icon\verify-branco.png" />
     <Content Include="Icon\verify.png" />
     <Content Include="IMG\Index\Fundo 2.png" />
+    <Content Include="IMG\Index\Logo M Mania 2.png" />
+    <Content Include="IMG\Index\Logo.jpg" />
     <Content Include="IMG\Index\Logo M Mania 1.png" />
     <Content Include="IMG\Index\TelaFundo.png" />
     <Content Include="Models\ModelBancoDados.Context.tt">
@@ -276,9 +278,12 @@
     <Content Include="Views\Home\ControleProducao.cshtml" />
     <Content Include="Views\Home\ControleVendas.cshtml" />
     <Content Include="Views\Home\PainelControle.cshtml" />
-    <Content Include="Views\Home\CadastroSementes.cshtml" />
     <Content Include="Views\Home\CadastroColaboradores.cshtml" />
     <Content Include="Views\Home\ControleRH.cshtml" />
+    <Content Include="Views\Home\CadastroFornecedor.cshtml" />
+    <Content Include="Views\Home\EditProduto.cshtml" />
+    <Content Include="Views\Home\CadastroProduto.cshtml" />
+    <Content Include="Views\Home\ListaProdutos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

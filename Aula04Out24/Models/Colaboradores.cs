@@ -11,13 +11,23 @@ namespace Aula04Out24.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
+
     public partial class Colaboradores
     {
+        [Key]
         public int Id { get; set; }
+        [Required(ErrorMessage = "O nome é obrigatório.")] // Campo obrigatório
         public string Nome { get; set; }
+
+        [Required(ErrorMessage = "O CPF é obrigatório.")]
         public string CPF { get; set; }
+
+        [Required(ErrorMessage = "O horário é obrigatório.")]
         public string Horario { get; set; }
+
+        [Required(ErrorMessage = "O cargo é obrigatório.")]
         public string Cargo { get; set; }
     }
 }

@@ -1,6 +1,6 @@
-﻿// a porra da area de login ta com problema, ja fiz de tudo e essa merda nao resolve
-using Aula04Out24.Models;
+﻿using Aula04Out24.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -11,16 +11,77 @@ namespace Aula04Out24.Controllers {
         public ActionResult Index() {
             return View();
         }
-
-        // views para login, post e get
+        public ActionResult ControleRH() {
+            return View();
+        }
+        public ActionResult ControleProducao() {
+            return View();
+        }
+        public ActionResult ControleVendas() {
+            return View();
+        }
+        public ActionResult CadastroUsuario() {
+            return View();
+        }
+        public ActionResult CadastroColaboradores() {
+            return View();
+        }
+        public ActionResult CadastroNutrientes() {
+            return View();
+        }
+        public ActionResult CadastroFornecedor() {
+            return View();
+        }
         public ActionResult Login() {
             return View();
         }
+        public ActionResult EditProduto(int id) {
+            var produto = _context.Produtos.FirstOrDefault(p => p.Id == id);
+            if (produto == null) {
+                return HttpNotFound();
+            }
+            return View(produto);
+        }
+        public ActionResult CadastroProduto() {
+            return View();
+        }
+        public ActionResult ListaProdutos() {
+            var produtos = _context.Produtos.ToList();
+            return View(produtos);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditProduto(Produtos produto) {
+            if (ModelState.IsValid) {
+                var produtoBanco = _context.Produtos.FirstOrDefault(p => p.Id == produto.Id);
+
+                if (produtoBanco != null) {
+                    produtoBanco.Nome = produto.Nome;
+                    produtoBanco.Preco = produto.Preco;
+                    produtoBanco.Validade = produto.Validade;
+                    produtoBanco.QtdProduto = produto.QtdProduto;
+                    _context.SaveChanges();
+                    TempData["ToastrMessage"] = "Produto atualizado com sucesso!";
+                    TempData["ToastrType"] = "success";
+                    return RedirectToAction("ListaProdutos");
+                }
+                else {
+                    TempData["ToastrMessage"] = "Produto não encontrado!";
+                    TempData["ToastrType"] = "error";
+                    return HttpNotFound();
+                }
+            }
+            LogModelErrors();
+            TempData["ToastrMessage"] = "Por favor, corrija os erros no formulário!";
+            TempData["ToastrType"] = "error";
+            return View(produto);
+        }
+
 
         [HttpPost]
         public ActionResult Login(Cadastro login) {
             if (ModelState.IsValid) {
-                // Remove a formatação do CPF
+                // remover a formatação do cpf para fazer nosso login
                 string cpfSemFormatacao = string.Concat(login.CPF.Where(char.IsDigit));
 
                 var usuario = _context.Cadastro
@@ -29,9 +90,6 @@ namespace Aula04Out24.Controllers {
                 if (usuario != null) {
                     TempData["ToastrMessage"] = "Login realizado com sucesso!";
                     TempData["ToastrType"] = "success";
-
-                    // Armazena o usuário na sessão
-                    Session["UsuarioLogado"] = usuario;
                     return RedirectToAction("PainelControle");
                 }
                 else {
@@ -47,11 +105,21 @@ namespace Aula04Out24.Controllers {
 
             return View(login);
         }
-
-        // views para cadastro de usuário, post e get
-        [HttpGet]
-        public ActionResult CadastroUsuario() {
-            return View();
+        [HttpPost]
+        public ActionResult CadastroProduto(Produtos produto) {
+            if (ModelState.IsValid) {
+                _context.Produtos.Add(produto);
+                _context.SaveChanges();
+                TempData["ToastrMessage"] = "Informações enviadas com sucesso!";
+                TempData["ToastrType"] = "success";
+                return RedirectToAction("ListaProdutos");
+            }
+            else {
+                LogModelErrors();
+                TempData["ToastrMessage"] = "Insira todos os campos para prosseguir!";
+                TempData["ToastrType"] = "error";
+            }
+            return View(produto);
         }
 
         [HttpPost]
@@ -71,10 +139,21 @@ namespace Aula04Out24.Controllers {
 
             return View(cadastro);
         }
-        // views para cadastrar semenst, post e get
-        [HttpGet]
-        public ActionResult CadastroSementes() {
-            return View();
+        [HttpPost]
+        public ActionResult CadastroFornecedor(Fornecedores fornecedor) {
+            if (ModelState.IsValid) {
+                _context.Fornecedores.Add(fornecedor);
+                _context.SaveChanges();
+                TempData["ToastrMessage"] = "Informações enviadas com sucesso!";
+                TempData["ToastrType"] = "success";
+                return RedirectToAction("CadastroFornecedor");
+            }
+            else {
+                LogModelErrors();
+                TempData["ToastrMessage"] = "Insira todos os campos para prosseguir!";
+                TempData["ToastrType"] = "error";
+            }
+            return View(fornecedor);
         }
 
         [HttpPost]
@@ -95,11 +174,6 @@ namespace Aula04Out24.Controllers {
             return View(sementes);
         }
 
-        [HttpGet]
-        public ActionResult CadastroNutrientes() {
-            return View();
-        }
-
         [HttpPost]
         public ActionResult CadastroNutrientes(Nutrientes cadastroNutriente) {
             if (ModelState.IsValid) {
@@ -118,26 +192,14 @@ namespace Aula04Out24.Controllers {
             return View(cadastroNutriente);
         }
 
-        public ActionResult ControleProducao() {
-            return View();
-        }
-
-        public ActionResult ControleVendas() {
-            return View();
-        }
-
         public ActionResult PainelControle() {
-            // Certificando-se de que o Toastr será exibido se houver alguma mensagem
             if (TempData["ToastrMessage"] != null) {
                 ViewBag.ToastrMessage = TempData["ToastrMessage"];
                 ViewBag.ToastrType = TempData["ToastrType"];
             }
             return View();
         }
-        [HttpGet]
-        public ActionResult CadastroColaboradores() {
-            return View();
-        }
+        
         [HttpPost]
         public ActionResult CadastroColaboradores(Colaboradores colaboradores) {
             if (ModelState.IsValid) {
@@ -145,7 +207,7 @@ namespace Aula04Out24.Controllers {
                 _context.SaveChanges();
                 TempData["ToastrMessage"] = "Informações enviadas com sucesso!";
                 TempData["ToastrType"] = "success";
-                return RedirectToAction("PainelControle");
+                return RedirectToAction("ControleRH");
             }
             else {
                 LogModelErrors();
@@ -156,20 +218,12 @@ namespace Aula04Out24.Controllers {
             return View(colaboradores);
         }
 
-
-        // Método utilitário para logar erros de validação
+        // validar algum tipo de erro futuro no toastr
         private void LogModelErrors() {
             foreach (var error in ModelState.Values.SelectMany(v => v.Errors)) {
                 Console.WriteLine($"Erro: {error.ErrorMessage}");
             }
         }
-
-        // Dispose o contexto ao final do ciclo de vida
-        protected override void Dispose(bool disposing) {
-            if (disposing) {
-                _context.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
 }
+

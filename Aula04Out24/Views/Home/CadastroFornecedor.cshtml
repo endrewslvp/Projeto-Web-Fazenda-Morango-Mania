@@ -1,0 +1,126 @@
+﻿@model Aula04Out24.Models.Fornecedores
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro de Fornecedor</title>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+          integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer" />
+    <link rel="icon" href="~/IMG/Index/Logo M Mania 1.png/">
+    <link rel="stylesheet" href="~/Content/CadastroFornecedor.css" />
+    <!-- Toastr CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+
+    <!-- Toastr JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            @if (ViewBag.ToastrMessage != null)
+            {
+                <text>
+                    toastr["@ViewBag.ToastrType"]("@ViewBag.ToastrMessage");
+                </text>
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <div class="bg"></div>
+    <header>
+        <a href="index.html" target="_blank">
+            <img class="logo" src="~/IMG/Index/Logo M Mania 1.png" />
+        </a>
+    </header>
+
+    <main>
+        <div class="main__container">
+            <div class="main__conteudo">
+                <div class="conteudo__wrapper">
+                    <div class="main__h1">
+                        <button class="button__voltar">
+                            <a href=@Url.Action("ControleProducao")>
+                                <i class="fa-solid fa-arrow-left"></i>
+                            </a>
+                        </button>
+                        <h1><span class="underline">Cadas</span>tro de Fornecedor</h1>
+                    </div>
+                    @using (Html.BeginForm("CadastroFornecedor", "Home", FormMethod.Post)) {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="input__box">
+                            <div class="input__wrapper">
+                                <div class="wrapper">
+                                    @Html.LabelFor(model => model.Nome, "Nome *", new { @class = "input__label" })
+                                    @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "input", @placeholder = "Insira o nome do fornecedor" } })
+                                    @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="wrapper">
+                                    @Html.LabelFor(model => model.Telefone, "Telefone *", new { @class = "input__label" })
+                                    @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "input", @placeholder = "(XX) XXXXX-XXXX" } })
+                                    @Html.ValidationMessageFor(model => model.Telefone, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="wrapper">
+                                    @Html.LabelFor(model => model.Email, "Email *", new { @class = "input__label" })
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "input", @placeholder = "Digite o email" } })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="wrapper">
+                                    @Html.LabelFor(model => model.CNPJ, "CNPJ *", new { @class = "input__label" })
+                                    @Html.EditorFor(model => model.CNPJ, new { htmlAttributes = new { @class = "input", @placeholder = "Insira o CNPJ" } })
+                                    @Html.ValidationMessageFor(model => model.CNPJ, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="wrapper">
+                                    @Html.LabelFor(model => model.Bairro, "Bairro *", new { @class = "input__label" })
+                                    @Html.EditorFor(model => model.Bairro, new { htmlAttributes = new { @class = "input", @placeholder = "Insira o bairro" } })
+                                    @Html.ValidationMessageFor(model => model.Bairro, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="wrapper">
+                                    @Html.LabelFor(model => model.Rua, "Rua *", new { @class = "input__label" })
+                                    @Html.EditorFor(model => model.Rua, new { htmlAttributes = new { @class = "input", @placeholder = "Insira a rua" } })
+                                    @Html.ValidationMessageFor(model => model.Rua, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="wrapper">
+                                    @Html.LabelFor(model => model.Numero, "Número *", new { @class = "input__label" })
+                                    @Html.EditorFor(model => model.Numero, new { htmlAttributes = new { @class = "input", @placeholder = "Nº" } })
+                                    @Html.ValidationMessageFor(model => model.Numero, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="wrapper">
+                                    @Html.LabelFor(model => model.TipoFornecimento, "Tipo de Fornecimento *", new { @class = "input__label" })
+                                    @Html.EditorFor(model => model.TipoFornecimento, new { htmlAttributes = new { @class = "input", @placeholder = "Tipo de fornecimento" } })
+                                    @Html.ValidationMessageFor(model => model.TipoFornecimento, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="container__button">
+                                <button type="submit" class="main__button button__enviar">
+                                    Cadastrar
+                                </button>
+                                <button type="reset" class="main__button button__limpar">
+                                    Limpar dados
+                                </button>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="main__icone">
+                    <img class="icone"
+                         src="~/Icon/caixa.png"
+                         alt="icone" />
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

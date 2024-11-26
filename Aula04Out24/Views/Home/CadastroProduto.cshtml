@@ -1,0 +1,95 @@
+﻿@model Aula04Out24.Models.Produtos
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro de Produtos</title>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+          integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer" />
+    <link rel="icon" href="assets/images/Logo.png" />
+    <link rel="stylesheet" href="~/Content/CadastroProduto.css" />
+</head>
+
+<body>
+    <div class="bg"></div>
+    <header>
+        <a href="index.html" target="_blank">
+            <img class="logo" src="~/IMG/Index/Logo M Mania 2.png" alt="Logo" />
+        </a>
+
+        <div class="header__wrapper">
+            <i class="fa-solid fa-user"></i>
+            <p class="header__p" id="usuario">User</p> <!-- Exibir nome do usuário -->
+        </div>
+    </header>
+
+    <main>
+        <div class="main__container">
+            <div class="main__conteudo">
+                <div class="conteudo__wrapper">
+                    <div class="main__h1">
+                        <button class="button__voltar">
+                            <a href=@Url.Action("ListaProdutos")>
+                                <i class="fa-solid fa-arrow-left"></i>
+                            </a>
+                        </button>
+                        <h1><span class="underline">Cadas</span>tro de Produtos</h1>
+                    </div>
+
+                    @using (Html.BeginForm("CadastroProduto", "Home", FormMethod.Post)) {
+                        @Html.AntiForgeryToken()
+
+                        <div class="input__wrapper">
+                            <div class="wrapper">
+                                @Html.LabelFor(model => model.Nome, "Nome *", new { @class = "input__label" })
+                                @Html.TextBoxFor(model => model.Nome, new { @class = "input", placeholder = "Insira o nome", required = "required" })
+                                @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="wrapper">
+                                @Html.LabelFor(model => model.Validade, "Validade *", new { @class = "input__label" })
+                                @Html.TextBoxFor(model => model.Validade, new { @class = "input", type = "date", required = "required" })
+                                @Html.ValidationMessageFor(model => model.Validade, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="wrapper">
+                                @Html.Label("Tipo de Produto *", new { @class = "input__label" })
+                                <input autocomplete="off"
+                                       class="input"
+                                       type="text"
+                                       id="tipo-produto"
+                                       name="tipo-produto"
+                                       placeholder="Insira o tipo de produto"
+                                       required />
+                            </div>
+
+                            <div class="wrapper">
+                                @Html.LabelFor(model => model.Preco, "Preço *", new { @class = "input__label" })
+                                @Html.TextBoxFor(model => model.Preco, new { @class = "input", type = "text", placeholder = "Preço", required = "required" })
+                                @Html.ValidationMessageFor(model => model.Preco, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="container__button">
+                            <button type="submit" class="main__button button__enviar">Cadastrar</button>
+                            <button type="reset" class="main__button button__limpar">Limpar dados</button>
+                        </div>
+                    }
+                </div>
+
+                <div class="main__icone">
+                    <div class="iconin">
+                        <img class="icone" src="~/Icon/caixa-aberta.png" alt="icone" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

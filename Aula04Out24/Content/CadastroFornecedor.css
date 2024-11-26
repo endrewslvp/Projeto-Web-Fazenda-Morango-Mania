@@ -33,6 +33,7 @@ body {
     overflow: hidden;
 }
 
+
 header {
     display: flex;
     align-items: center;
@@ -98,9 +99,16 @@ main {
     margin: 40px auto;
 }
 
+.iconin {
+    background-color: #b9d88f;
+    padding: 30px;
+    border-radius: 50%;
+    clip-path: circle(50%);
+}
+
 .icone {
-    min-width: 160px;
-    max-width: 200px;
+    min-width: 100px;
+    max-width: 110px;
 }
 
 .main__h1 {
@@ -175,15 +183,15 @@ main {
 }
 
 #nome {
-    min-width: 500px;
+    min-width: 300px;
 }
 
-#estoque {
-    width: 120px;
+#numero {
+    max-width: 60px;
 }
 
-#validade {
-    width: 140px;
+#fornecimento {
+    min-width: 250px;
 }
 
 .button__icon {

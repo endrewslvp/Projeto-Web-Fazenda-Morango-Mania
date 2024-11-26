@@ -26,11 +26,29 @@ body {
     overflow: hidden;
 }
 
+
 header {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     background-color: #fffef0;
     width: 100%;
+    padding: 0 20px;
+}
+
+.header__wrapper {
+    display: flex;
+}
+
+.header__p {
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.fa-user {
+    margin-right: 8px;
+    font-size: 28px;
+    color: #404040;
 }
 
 main {

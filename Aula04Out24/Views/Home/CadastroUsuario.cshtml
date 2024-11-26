@@ -80,18 +80,8 @@
                             </div>
 
                             <div class="wrapper">
-                                @Html.Label("Cargo *", new { @class = "input__label" })
-                                <div class="radio">
-                                    <label for="cargo-1">
-                                        @Html.RadioButtonFor(model => model.Cargo, "Cargo 1", new { @id = "cargo-1", @class = "input" }) Cargo 1
-                                    </label>
-                                    <label for="cargo-2">
-                                        @Html.RadioButtonFor(model => model.Cargo, "Cargo 2", new { @id = "cargo-2", @class = "input" }) Cargo 2
-                                    </label>
-                                    <label for="cargo-3">
-                                        @Html.RadioButtonFor(model => model.Cargo, "Cargo 3", new { @id = "cargo-3", @class = "input" }) Cargo 3
-                                    </label>
-                                </div>
+                                @Html.LabelFor(model => model.Cargo, "Cargo *", new { @class = "input__label" })
+                                @Html.EditorFor(model => model.Cargo, new { htmlAttributes = new { @class = "input", @placeholder = "Digite o cargo do usuário" } })
                                 @Html.ValidationMessageFor(model => model.Cargo, "", new { @class = "text-danger" })
                             </div>
 

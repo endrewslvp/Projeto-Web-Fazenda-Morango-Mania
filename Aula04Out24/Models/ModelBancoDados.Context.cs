@@ -36,6 +36,5 @@ namespace Aula04Out24.Models
         public virtual DbSet<Sementes> Sementes { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Vendas> Vendas { get; set; }
-        public virtual DbSet<Admin> Admin { get; set; }
     }
 }

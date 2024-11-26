@@ -24,7 +24,6 @@ a {
 
 body {
     height: 100vh;
-    background-color: aqua;
     margin: 0 auto;
     background-image: url('../img/index/fundo 2.png');
     background-repeat: no-repeat;
@@ -98,9 +97,16 @@ main {
     margin: 40px auto;
 }
 
+.iconin {
+    background-color: #b9d88f;
+    padding: 30px;
+    border-radius: 50%;
+    clip-path: circle(50%);
+}
+
 .icone {
-    min-width: 160px;
-    max-width: 200px;
+    min-width: 100px;
+    max-width: 110px;
 }
 
 .main__h1 {
@@ -175,15 +181,15 @@ main {
 }
 
 #nome {
-    min-width: 500px;
+    min-width: 300px;
 }
 
-#estoque {
-    width: 120px;
+#numero {
+    max-width: 60px;
 }
 
-#validade {
-    width: 140px;
+#fornecimento {
+    min-width: 250px;
 }
 
 .button__icon {
@@ -215,7 +221,7 @@ main {
 }
 
 .button__enviar {
-    background-color: rgb(255, 105, 105);
+    background-color: rgb(185, 216, 143);
     color: rgb(255, 254, 240, 1);
 }
 
@@ -230,5 +236,5 @@ main {
     }
 
 .button__enviar:hover {
-    background-color: rgba(255, 105, 105, 0.8);
+    background-color: rgba(156, 182, 119, 0.8);
 }
