@@ -11,16 +11,31 @@
           referrerpolicy="no-referrer" />
     <link rel="icon" href="assets/images/Logo.png" />
     <link rel="stylesheet" href="~/Content/ControleRH.css" />
+    <script>
+
+    $(document).ready(function () {
+        var message = '@TempData["ToastrMessage"]';
+        var type = '@TempData["ToastrType"]';
+
+        if (message && type) {
+            toastr[type](message);
+        }
+    </script>
 </head>
 
 <body>
     <div class="bg"></div>
     <header>
         <a href="index.html" target="_blank">
-            <!-- trocado o caminho da imagem -->
-            <img class="logo" src="~/IMG/Index/Logo M Mania 1.png" />
+            <img class="logo" src="~/IMG/Index/Logo M Mania 2.png" />
         </a>
+        <div class="header__wrapper">
+            <i class="fa-solid fa-user"></i>
+            <!-- Colocar lógica para mostrar nome do usuário -->
+            <p class="header__p" id="usuario">@ViewBag.NomeUsuario</p>
+        </div>
     </header>
+
 
     <main>
         <div class="main__container">

@@ -18,8 +18,11 @@
     <!-- Toastr JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
     <script>
         $(document).ready(function () {
+            $('#CNPJ').mask('00.000.000/0000-00');
+
             @if (ViewBag.ToastrMessage != null)
             {
                 <text>
@@ -34,8 +37,13 @@
     <div class="bg"></div>
     <header>
         <a href="index.html" target="_blank">
-            <img class="logo" src="~/IMG/Index/Logo M Mania 1.png" />
+            <img class="logo" src="~/IMG/Index/Logo M Mania 2.png" />
         </a>
+        <div class="header__wrapper">
+            <i class="fa-solid fa-user"></i>
+            <!-- Colocar lógica para mostrar nome do usuário -->
+            <p class="header__p" id="usuario">@ViewBag.NomeUsuario</p>
+        </div>
     </header>
 
     <main>
@@ -44,7 +52,7 @@
                 <div class="conteudo__wrapper">
                     <div class="main__h1">
                         <button class="button__voltar">
-                            <a href=@Url.Action("ControleProducao")>
+                            <a href=@Url.Action("ListaFornecedores")>
                                 <i class="fa-solid fa-arrow-left"></i>
                             </a>
                         </button>
@@ -75,7 +83,7 @@
 
                                 <div class="wrapper">
                                     @Html.LabelFor(model => model.CNPJ, "CNPJ *", new { @class = "input__label" })
-                                    @Html.EditorFor(model => model.CNPJ, new { htmlAttributes = new { @class = "input", @placeholder = "Insira o CNPJ" } })
+                                    @Html.EditorFor(model => model.CNPJ, new { htmlAttributes = new { @class = "input", @id = "CNPJ", @placeholder = "Insira o CNPJ" } })
                                     @Html.ValidationMessageFor(model => model.CNPJ, "", new { @class = "text-danger" })
                                 </div>
 

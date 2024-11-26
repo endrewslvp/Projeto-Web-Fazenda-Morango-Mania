@@ -284,6 +284,8 @@
     <Content Include="Views\Home\EditProduto.cshtml" />
     <Content Include="Views\Home\CadastroProduto.cshtml" />
     <Content Include="Views\Home\ListaProdutos.cshtml" />
+    <Content Include="Views\Home\EditFornecedor.cshtml" />
+    <Content Include="Views\Home\ListaFornecedores.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

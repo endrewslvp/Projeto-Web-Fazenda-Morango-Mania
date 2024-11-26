@@ -24,7 +24,7 @@
 
         <div class="header__wrapper">
             <i class="fa-solid fa-user"></i>
-            <p class="header__p" id="usuario">User</p> <!-- Exibir nome do usuário -->
+            <p class="header__p" id="usuario">@ViewBag.NomeUsuario</p> <!-- Exibir nome do usuário -->
         </div>
     </header>
 
@@ -73,6 +73,12 @@
                                 @Html.TextBoxFor(model => model.Preco, new { @class = "input", type = "text", placeholder = "Preço", required = "required" })
                                 @Html.ValidationMessageFor(model => model.Preco, "", new { @class = "text-danger" })
                             </div>
+
+                            <div class="wrapper">
+                                @Html.LabelFor(model => model.QtdProduto, "Quantidade *", new { @class = "input__label" })
+                                @Html.TextBoxFor(model => model.QtdProduto, new { @class = "input", type = "number", placeholder = "Insira a quantidade", required = "required" })
+                                @Html.ValidationMessageFor(model => model.QtdProduto, "", new { @class = "text-danger" })
+                            </div>
                         </div>
 
                         <div class="container__button">
@@ -90,6 +96,5 @@
             </div>
         </div>
     </main>
-
 </body>
 </html>

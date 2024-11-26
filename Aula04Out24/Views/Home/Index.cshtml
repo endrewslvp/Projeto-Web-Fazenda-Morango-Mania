@@ -4,55 +4,100 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Morango Mania</title>
-
-    <!-- Font Awesome -->
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
           integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
           crossorigin="anonymous"
           referrerpolicy="no-referrer" />
+    <link rel="icon" href="~/IMG/Index/Logo.jpg" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Index.css")?v=@DateTime.Now.Ticks" />
 
-    <!-- Toastr CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
-
-    <!-- Toastr JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-
-    <link rel="icon" href="assets/images/Logo.png" />
-    <link rel="stylesheet" href="~/Content/Index.css" />
-
-    <script>
-    $(document).ready(function () {
-        @if (TempData["ToastrMessage"] != null)
-        {
-            <text>
-                toastr["@TempData["ToastrType"]"]("@TempData["ToastrMessage"]");
-            </text>
-        }
-    });
-    </script>
 </head>
 
 <body>
     <div class="bg"></div>
     <header>
-        <img class="logo" src="~/IMG/Index/Logo M Mania 1.png" alt="Logo da Morango Mania" />
+        <img class="logo"
+             src="~/IMG/Index/Logo M Mania 1.png"
+             alt="Logo da Morango Mania" />
         <nav class="nav__links">
-            <!--BotÃ£o voltar funfando dahora-->
-            <a href="@Url.Action("Login", "Home")"><button class="nav__btn">Login</button></a>
+            <a href="@Url.Action("Login")"><button class="nav__btn">Login</button></a>
         </nav>
     </header>
     <main>
         <div class="receba">
-            <form class="form" target="_blank" method="get" action="https://www.google.com/search">
-                <input class="input" type="search" placeholder="Buscar Produtos" />
-                <button class="input__btn" type="submit">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-            </form>
+            <h1>O FRESCOR DA FAZENDA AO SEU ALCANCE:</h1>
+            <p class="matico">Morangos cultivados ano coração da cidade!</p>
         </div>
     </main>
-    <footer></footer>
+    <footer>
+        <div id="footer_content">
+            <div id="footer_contacts">
+                <h2>Morango Mania</h2>
+                <p>O Sabor da Fazenda no Coração da Cidade!</p>
+
+                <div id="footer_social_media">
+                    <a href="#" class="footer-link" id="instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+
+                    <a href="#" class="footer-link" id="facebook">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+
+                    <a href="#" class="footer-link" id="whatsapp">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+
+            <ul class="footer-list">
+                <li>
+                    <h3>Blog</h3>
+                </li>
+                <li>
+                    <a href="https://www.canva.com/design/DAGXCMwoOJU/SMTNXZ8YXHB4kZb3OnNU_g/edit?utm_content=DAGXCMwoOJU&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" class="footer-link" target="_blank">Cartilha</a>
+                </li>
+                <li>
+                    <a href="https://www.canva.com/design/DAGW9xhssi4/ulBa7ZMF-9KojKAill9wnA/edit?utm_content=DAGW9xhssi4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" class="footer-link" target="_blank">Infográfico</a>
+                </li>
+                <li>
+                    <a href="https://www.canva.com/design/DAGW-3M_doY/e9Y2GjzAaAtcRa2SX8PdJA/edit?utm_content=DAGW-3M_doY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" class="footer-link" target="_blank">Panfleto</a>
+                </li>
+            </ul>
+
+            <ul class="footer-list">
+                <li>
+                    <h3>Aplicações</h3>
+                </li>
+                <li>
+                    <a href="#" class="footer-link">App</a>
+                </li>
+                <li>
+                    <a href="#" class="footer-link">Desktop</a>
+                </li>
+            </ul>
+
+            <div id="footer_subscribe">
+                <h3>Inscreva-se</h3>
+
+                <p>
+                    Coloque seu e-mail e seja notificado sobre nossas mais novas soluções
+                </p>
+
+                <div id="input_group">
+                    <input type="email" id="email">
+                    <button>
+                        <i class="fa-regular fa-envelope"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="footer_copyright">
+            &#169
+            2024 all rights reserved
+        </div>
+    </footer>
 </body>
 </html>
