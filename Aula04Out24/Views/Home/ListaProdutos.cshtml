@@ -14,11 +14,8 @@
 
     <script>
         $(document).ready(function () {
-            // Verifica se a mensagem de Toastr existe
             var message = '@TempData["ToastrMessage"]';
             var type = '@TempData["ToastrType"]';
-
-            // Se houver mensagem e tipo, exibe a notificação
             if (message && type) {
                 toastr[type](message);
             }
@@ -42,7 +39,14 @@
 
     <div class="container py-5">
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h2 class="mb-0">Lista de Produtos</h2>
+            <div class="main__h1">
+                <button class="buttonvoltar">
+                    <a class="voltar__link" href="@Url.Action("ControleProducao")">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </a>
+                </button>
+                <h2 class="mb-0">Lista de Produtos</h2>
+            </div>
             <a href="@Url.Action("CadastroProduto")" class="btn btn-success"><i class="fas fa-plus"></i> Cadastrar Produto</a>
         </div>
         <table class="table table-striped table-hover">

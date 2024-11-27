@@ -54,6 +54,7 @@ header {
 
 .header__wrapper {
     display: flex;
+    align-items:center;
 }
 
 .header__p {

@@ -12,7 +12,7 @@
           crossorigin="anonymous"
           referrerpolicy="no-referrer" />
     <link rel="icon" href="assets/images/Logo.png" />
-    <link rel="stylesheet" href="~/Content/CadastroProduto.css" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/CadastroProduto.css")?v=@DateTime.Now.Ticks" />
 </head>
 
 <body>
@@ -90,7 +90,7 @@
 
                 <div class="main__icone">
                     <div class="iconin">
-                        <img class="icone" src="~/Icon/caixa-aberta.png" alt="icone" />
+                        <img class="icone" src="~/Icon/box-open.png" alt="icone" />
                     </div>
                 </div>
             </div>
